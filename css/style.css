@@ -25,16 +25,16 @@ body {
 }
 @keyframes changeSlide{
     0%{
-        background-image: url("https://biharijiproperty.com/images/img1.png");
+        background-image: url("https://img.freepik.com/premium-photo/god-krishna-with-gobardhan-parvat-mountain-image-indian-temple-wall-art-statue_181020-5985.jpg?ga=GA1.1.332943406.1726205077&semt=ais_hybrid");
     }
     30%{
-        background-image: url("https://biharijiproperty.com/images/img2.png");
+        background-image: url("https://img.freepik.com/premium-photo/madurai-tamil-nadu-india-december-25-2018-beautiful-sculptures-minakshi-sundareshvara-temple-madurai-tamilnadu-india_268419-387.jpg?ga=GA1.1.332943406.1726205077&semt=ais_hybrid");
     }
     60%{
-        background-image: url("https://biharijiproperty.com/images/img4.jpg");
+        background-image: url("https://img.freepik.com/premium-photo/hare-rama-hare-krishna_812725-1297.jpg?ga=GA1.1.332943406.1726205077&semt=ais_hybrid");
     }
     100%{
-        background-image: url("https://biharijiproperty.com/images/img5.jpg");
+        background-image: url("https://img.freepik.com/premium-photo/colorful-illustration-depicting-shiva-shakti-embracing-symbolizing-divine-masculine_661495-71592.jpg?ga=GA1.1.332943406.1726205077&semt=ais_hybrid");
     }
 }
 
@@ -1537,7 +1537,7 @@ button:focus {
 .tech-cont-2{ font-size:18px; margin-top:10px; line-height:22px;}
 .naac{font-size: 21px;
     padding-top: 39px;
-    color: #000;
+    color: #ffffff;
     font-weight: bold;}
 .ele-img{ width:300px; padding:0px 0px 20px 0px;}
 
