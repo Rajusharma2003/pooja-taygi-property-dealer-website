@@ -25,7 +25,7 @@ body {
 }
 @keyframes changeSlide{
     0%{
-        background-image: url("https://img.freepik.com/premium-photo/god-krishna-with-gobardhan-parvat-mountain-image-indian-temple-wall-art-statue_181020-5985.jpg?ga=GA1.1.332943406.1726205077&semt=ais_hybrid");
+        background-image: url("../img/pproperty\ img.jpg");
     }
     30%{
         background-image: url("https://img.freepik.com/premium-photo/madurai-tamil-nadu-india-december-25-2018-beautiful-sculptures-minakshi-sundareshvara-temple-madurai-tamilnadu-india_268419-387.jpg?ga=GA1.1.332943406.1726205077&semt=ais_hybrid");
