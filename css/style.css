@@ -1649,3 +1649,13 @@ button:focus {
     color:#222222;
   }
 /* End whatsapp section */
+
+
+.page-header {
+    width: 100%;
+    /* background: url('../img/subbanner.jp') center center no-repeat; */
+    background: linear-gradient(rgb(22 148 162), rgba(207 203 203)), url(../img/carousel-1.jpg) center center no-repeat;
+    background-size: contain;
+    padding-bottom: 50px;
+    
+}
