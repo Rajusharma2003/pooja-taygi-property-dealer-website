@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php
+include 'admin/config.php'; // Ensure this path points to the correct location of config.php
+
+// Fetch properties from the database
+$result = $conn->query("SELECT * FROM properties");
+
+if (!$result) {
+    die('Error fetching properties: ' . $conn->error);
+}
+?>
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -21,31 +32,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
  
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script>
-    $(document).ready(function () {
-      url = new URL(window.location.href);
-      var campaign_name = url.searchParams.get("utm_campaign");
-      var keyword = url.searchParams.get("utm_keyword");
-      var source = url.searchParams.get("utm_source");
-      var network = url.searchParams.get("utm_network");
-      var utm_medium = url.searchParams.get("utm_medium");
-
-      document.getElementById("campaign_url").value = window.location.href;
-      document.getElementById("campaign_name").value = campaign_name;
-      document.getElementById("keyword").value = keyword;
-      document.getElementById("sourceId").value = source;
-      document.getElementById("network").value = network;
-      document.getElementById("utm_medium").value = utm_medium;
-
-      if (document.referrer) {
-        var myReferer = document.referrer;
-        document.getElementById("referrerid").value = myReferer;
-      }
-      else {
-        document.getElementById("referrerid").value = 'None';
-      }
-    });
-  </script>
+  
  
 
  <!-- This is for the navbar and main carousel banner -->
@@ -217,9 +204,11 @@
   
 
   <!-- This is the particles js banner code  -->
+
   <!-- particles.js container -->
   <div id="particles-js"></div>
   <!-- stats - count particles -->
+   
   <div class="count-particles"> <span class="js-count-particles">--</span> </div>
   <section class="main-banner" >
     <div class="banner-text" >
@@ -281,13 +270,22 @@
           class="img-fluid"> </div>
       <div class="helmate"> <img src="https://biharijiproperty.com/images/helmate.png" alt="gla" class="img-fluid"> </div>
     </div>
+
+    <!-- This is the dd section -->
+     <div class="container">
+      <div class="heading">
+        <h2 class=""><span>VRINDAVAN</span></h2>
+        <p data-aos="fade-in" data-aos-duration="2000"></p>
+      </div>
+     </div>
+     <!-- End dd section -->
   </section>
   <!-- End gallery section -->
 
 
   <!-- This is the sub banner section -->
   <section class="image-section">
-    <img src="img/asdf.jpg" alt="Cooking Products" class="w-100" />
+    <img src="img/asdf.jpg" alt="p property mata img" class="w-100" />
   </section>
   <!-- End sub banner section -->
 
@@ -303,167 +301,37 @@
       <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
       <div class="row justify-content-center mb-5">
         <!-- Card 1 -->
+        <?php while ($row = $result->fetch_assoc()): ?>
         <div class="properties">
           <a href="#">
-            <div class="img"><img style="border-radius: 20px;" src="img/pp1.png" alt="product img"></div>
+            <div class="img"><img style="border-radius: 20px; width: 100%; object-fit:cover;" 
+            src="<?php echo htmlspecialchars('admin/' . $row['image_path']); ?>" 
+            alt="Property Image"></div>
           </a>
           <div class="text">
-            <span class="status sale">Sale</span>
+          <span class="status <?php echo htmlspecialchars($row['status']); ?>">
+              <?php echo htmlspecialchars($row['status']); ?>
+          </span>
             <div class="flex">
               <div class="one">
-                <h3><a href="#">property in Vrindavan</a></h3>
-                <p>2Bhk & 3Bhk - Flats</p>
+              <h3><a href="#"><?php echo htmlspecialchars($row['title']); ?></a></h3>
+              <p><?php echo htmlspecialchars($row['type']); ?> - Flats</p>
               </div>
               <div class="two">
-                <span class="price">price</span>
+              <span class="price">₹<?php echo htmlspecialchars($row['price']); ?></span>
               </div>
             </div>
-            <!-- <p>add property description here</p> -->
+            <p><?php echo htmlspecialchars($row['description']); ?></p>
             <hr>
-            <!-- <p class="bottom-area">
-              <span><i class='bx bx-selection' style='color:#ce3f3f'></i> 250sqft</span>
-              <span class="ml-auto"><i class='bx bxs-bath' style='color:#ba5252'></i> 3</span>
-              <span><i class='bx bxs-bed' style='color:#4a3fce'></i>4</span>
-            </p> -->
           </div>
         </div>
-        <!-- Card 2 -->
-        <div class="properties">
-          <a href="#">
-            <div class="img"><img style="border-radius: 20px;" src="img/pp2.png" alt="product img"></div>
-          </a>
-          <div class="text">
-            <span class="status sale">Sale</span>
-            <div class="flex">
-              <div class="one">
-                <h3><a href="#">property in Mathura</a></h3>
-                <p>Plots</p>
-              </div>
-              <div class="two">
-                <span class="price">price</span>
-              </div>
-            </div>
-            <!-- <p>add property description here</p> -->
-            <hr>
-            <!-- <p class="bottom-area">
-              <span><i class='bx bx-selection' style='color:#ce3f3f'></i> 250sqft</span>
-              <span class="ml-auto"><i class='bx bxs-bath' style='color:#ba5252'></i> 3</span>
-              <span><i class='bx bxs-bed' style='color:#4a3fce'></i> 4</span>
-            </p> -->
-          </div>
-        </div>
-        <!-- Card 3 -->
-        <div class="properties">
-          <a href="#">
-            <div class="img"><img style="border-radius: 20px;" src="img/pp3.png" alt="product img"></div>
-          </a>
-          <div class="text">
-            <span class="status rent">Sale</span>
-            <div class="flex">
-              <div class="one">
-                <h3><a href="#">property in Goverdhan</a></h3>
-                <p>Plots</p>
-              </div>
-              <div class="two">
-                <span class="price">price<small></small></span>
-              </div>
-            </div>
-            <!-- <p>add property description here</p> -->
-            <hr>
-            <!-- <p class="bottom-area">
-              <span><i class='bx bx-selection' style='color:#ce3f3f'></i> 250sqft</span>
-              <span class="ml-auto"><i class='bx bxs-bath' style='color:#ba5252'></i></i> 3</span>
-              <span><i class='bx bxs-bed' style='color:#4a3fce'></i> 4</span>
-            </p> -->
-          </div>
-        </div>
-      </div>
-
-      <div class="row justify-content-center mb-5 pb-3">
-        <!-- Card 4 -->
-        <div class="properties">
-          <a href="#">
-            <div class="img"><img style="border-radius: 20px;" src="img/pp4.png" alt="product img"></div>
-          </a>
-          <div class="text">
-            <span class="status sale">Sale</span>
-            <div class="flex">
-              <div class="one">
-                <h3><a href="#">property in Barsana</a></h3>
-                <p>2Bhk & 3Bhk - Flats</p>
-              </div>
-              <div class="two">
-                <span class="price">price</span>
-              </div>
-            </div>
-            <!-- <p>add property description here</p> -->
-            <hr>
-            <!-- <p class="bottom-area">
-              <span><i class='bx bx-selection' style='color:#ce3f3f'></i> 250sqft</span>
-              <span class="ml-auto"><i class='bx bxs-bath' style='color:#ba5252'></i> 3</span>
-              <span><i class='bx bxs-bed' style='color:#4a3fce'></i>4</span>
-            </p> -->
-          </div>
-        </div>
-
-        <!-- Card 5 -->
-        <div class="properties">
-          <a href="#">
-            <div class="img"><img style="border-radius: 20px;" src="img/pp1.png" alt="product img"></div>
-          </a>
-          <div class="text">
-            <span class="status sale">Sale</span>
-            <div class="flex">
-              <div class="one">
-                <h3><a href="#">property in Chhata </a></h3>
-                <p>Plots & Villas</p>
-              </div>
-              <div class="two">
-                <span class="price">price</span>
-              </div>
-            </div>
-            <!-- <p>add property description here</p> -->
-            <hr>
-            <!-- <p class="bottom-area">
-              <span><i class='bx bx-selection' style='color:#ce3f3f'></i> 250sqft</span>
-              <span class="ml-auto"><i class='bx bxs-bath' style='color:#ba5252'></i> 3</span>
-              <span><i class='bx bxs-bed' style='color:#4a3fce'></i> 4</span>
-            </p> -->
-          </div>
-        </div>
-
-        <!-- Card 6 -->
-        <div class="properties">
-          <a href="#">
-            <div class="img"><img style="border-radius: 20px;" src="img/pp2.png" alt="product img"></div>
-          </a>
-          <div class="text">
-            <span class="status rent">Sale</span>
-            <div class="flex">
-              <div class="one">
-                <h3><a href="#">property in Nandgaon & All bhumi</a></h3>
-                <p>Apartment</p>
-              </div>
-              <div class="two">
-                <span class="price">price<small></small></span>
-              </div>
-            </div>
-            <!-- <p>add property description here</p> -->
-            <hr>
-            <!-- <p class="bottom-area">
-              <span><i class='bx bx-selection' style='color:#ce3f3f'></i> 250sqft</span>
-              <span class="ml-auto"><i class='bx bxs-bath' style='color:#ba5252'></i></i> 3</span>
-              <span><i class='bx bxs-bed' style='color:#4a3fce'></i> 4</span>
-            </p> -->
-          </div>
-        </div> 
-      </div>
+        <?php endwhile; ?>
+     
 
 
       <!-- There is a image inside the background in style.css -->
        <!-- This is the slider image section -->
-      <div class="imgSlider">
-      </div>
+      <div class="imgSlider"></div>
       <!-- End slider image section -->
 
       <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
@@ -594,12 +462,12 @@
   </div>
    <!-- End whatsapp section -->
 
-      
+      <!-- This is the js section -->
       <script src="js/particles.min.js"></script>
       <script src="js/stats.min.js"></script>
       <script src="js/animation.js"></script>
       <script src="js/owl.carousel.min.js"></script>
-
+      <!-- End js section -->
      
       <div class="can"></div>
       <script>
@@ -732,10 +600,11 @@
         requestAnimationFrame(update);;
 
       </script>
+
       <script>
         AOS.init();
-
       </script>
+
       <script type="text/javascript">
         $('.count ').each(function () {
           $(this).prop('Counter', 0).animate({
@@ -764,37 +633,7 @@
       <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
-      <!-- <script>
-        function openCity(evt, cityName) {
-          var i, tabcontent, tablinks;
-          tabcontent = document.getElementsByClassName("tabcontent");
-          for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
-          }
-          tablinks = document.getElementsByClassName("tablinks");
-          for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
-          }
-          document.getElementById(cityName).style.display = "block";
-          evt.currentTarget.className += " active";
-        }
-
-        // Get the element with id="defaultOpen" and click on it
-        document.getElementById("defaultOpen").click();
-      </script> -->
       
-      <!-- <script>
-        $('.faqquestiontitle').on("click", function () {
-
-          $(this).next().slideToggle();
-          $(this).parents('.accorditem').siblings().find('.faqanswer').slideUp()
-          $(this).parents('.accorditem').siblings().find('.plusminus').text('+')
-          $(this).find('.plusminus').text(function (i, text) {
-            return text === "-" ? "+" : "-";
-          })
-
-        })
-      </script> -->
       <!-- custom -->
       <script src="js/custom.js"></script>
       <script>
