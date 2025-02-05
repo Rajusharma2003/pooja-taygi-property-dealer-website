@@ -5,9 +5,9 @@ include 'config.php';
 $searchQuery = '';
 if (isset($_GET['search'])) {
     $searchQuery = $_GET['search'];
-    $stmt = $conn->prepare("SELECT * FROM properties WHERE title LIKE ?");
+    $stmt = $conn->prepare("SELECT * FROM properties WHERE title LIKE ? OR city LIKE ?");
     $searchTerm = "%{$searchQuery}%";
-    $stmt->bind_param("s", $searchTerm);
+    $stmt->bind_param("ss", $searchTerm, $searchTerm);
 } else {
     $stmt = $conn->prepare("SELECT * FROM properties");
 }
@@ -113,13 +113,13 @@ $result = $stmt->get_result();
         <h2>Manage Properties</h2>
 
         <!-- This is the back button -->
-    <button class="back-button" onclick="window.history.back()">≪-</button>
-      <button class="back-button" style="background-color: #e65c50; color: white; margin-bottom:10px" onclick="window.location.href='admin_panel.php'">Home</button>
+        <button class="back-button" onclick="window.history.back()">≪-</button>
+        <button class="back-button" style="background-color: #e65c50; color: white; margin-bottom:10px" onclick="window.location.href='admin_panel.php'">Home</button>
 
         <!-- Search Bar -->
         <div class="search-container">
             <form action="manage_properties.php" method="get">
-                <input type="text" name="search" placeholder="Search by title..." value="<?php echo htmlspecialchars($searchQuery); ?>">
+                <input type="text" name="search" placeholder="Search by title or city..." value="<?php echo htmlspecialchars($searchQuery); ?>">
             </form>
         </div>
 
@@ -130,7 +130,8 @@ $result = $stmt->get_result();
                 <th>Type</th>
                 <th>Price</th>
                 <th>Status</th>
-                <th>Action</th>
+                <th>City</th>
+                <th>description</th>
             </tr>
             <?php
             if ($result->num_rows > 0) {
@@ -141,6 +142,8 @@ $result = $stmt->get_result();
                         <td>{$row['type']}</td>
                         <td>{$row['price']}</td>
                         <td>{$row['status']}</td>
+                        <td>{$row['city']}</td>
+                        <td>{$row['description']}</td>
                         <td class='action-links'>
                             <a href='edit_property.php?id={$row['id']}'>Edit</a> 
                             <a href='delete_property.php?id={$row['id']}'>Delete</a>
@@ -148,11 +151,10 @@ $result = $stmt->get_result();
                     </tr>";
                 }
             } else {
-                echo "<tr><td colspan='6'>No properties found.</td></tr>";
+                echo "<tr><td colspan='7'>No properties found.</td></tr>";
             }
             ?>
         </table>
     </div>
 </body>
 </html>
-

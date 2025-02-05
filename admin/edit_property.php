@@ -21,8 +21,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $type = $conn->real_escape_string($_POST['type']);
     $price = $conn->real_escape_string($_POST['price']);
     $status = $conn->real_escape_string($_POST['status']);
+    $city = $conn->real_escape_string($_POST['city']);
+    $description = $conn->real_escape_string($_POST['description']); // New field for description
     $imagePath = $property['image_path']; // Default to existing image
-
 
     // Handle file upload if a new image is provided
     if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
@@ -36,12 +37,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    // Update the property in the database
+    // Update the property in the database including the description field
     $sql = "UPDATE properties SET 
             title = '$title', 
             type = '$type', 
             price = '$price', 
-            status = '$status',
+            status = '$status', 
+            city = '$city',
+            description = '$description',
             image_path = '$imagePath'
             WHERE id = $id";
 
@@ -70,9 +73,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            /* height: 100vh; */
         }
-
         .container {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
@@ -82,23 +84,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             width: 90%;
             max-width: 600px;
         }
-
         h2 {
             margin-bottom: 20px;
             font-size: 28px;
         }
-
         form {
             display: flex;
             flex-direction: column;
         }
-
         label {
             margin-bottom: 5px;
             font-size: 16px;
         }
-
-        input, select {
+        input, select, textarea {
             padding: 10px;
             margin-bottom: 15px;
             border: none;
@@ -106,12 +104,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             outline: none;
             font-size: 16px;
         }
-
         input[type="file"] {
             background: rgba(255, 255, 255, 0.2);
             color: #fff;
         }
-
         button {
             padding: 10px;
             border: none;
@@ -122,7 +118,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             cursor: pointer;
             transition: background 0.3s ease;
         }
-
         button:hover {
             background-color: #e65c50;
         }
@@ -131,35 +126,43 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <div class="container">
         <h2>Edit Property</h2>
+
+         <!-- This is the back button -->
+         <button class="back-button" onclick="window.history.back()">≪-</button>
+        <button class="back-button" style="background-color: #e65c50; color: white; margin-bottom:10px" onclick="window.location.href='admin_panel.php'">Home</button>
+        
         <form method="POST" enctype="multipart/form-data">
             <label for="title">Title:</label>
-            <input type="text" id="title" name="title" value="<?= $property['title'] ?>" required>
+            <input type="text" id="title" name="title" value="<?= htmlspecialchars($property['title']); ?>" required>
 
             <label for="type">Type:</label>
             <select id="type" name="type" required>
-                <option value="House" <?= $property['type'] === 'House' ? 'selected' : '' ?>>House</option>
-                <option value="Apartment" <?= $property['type'] === 'Apartment' ? 'selected' : '' ?>>Apartment</option>
-                <option value="Land" <?= $property['type'] === 'Land' ? 'selected' : '' ?>>Land</option>
+                <option value="House" <?= $property['type'] === 'House' ? 'selected' : ''; ?>>House</option>
+                <option value="Apartment" <?= $property['type'] === 'Apartment' ? 'selected' : ''; ?>>Apartment</option>
+                <option value="Land" <?= $property['type'] === 'Land' ? 'selected' : ''; ?>>Land</option>
             </select>
 
             <label for="price">Price:</label>
-            <input type="number" id="price" name="price" value="<?= $property['price'] ?>" required>
+            <input type="number" id="price" name="price" value="<?= htmlspecialchars($property['price']); ?>" required>
 
             <label for="status">Status:</label>
             <select id="status" name="status" required>
-                <!-- <option value="Available" <?= $property['status'] === 'Available' ? 'selected' : '' ?>>Available</option>
-                <option value="Sold" <?= $property['status'] === 'Sold' ? 'selected' : '' ?>>Sold</option> -->
-                <option value="Sale">Sale</option>
-                <option value="Rent">Rent</option>
-                <option value="Sold">Sold</option>
-                <!-- <option value="Available">Available</option>
-                <option value="Unavailable">Unavailable</option> -->
+                <option value="Sale" <?= $property['status'] === 'Sale' ? 'selected' : ''; ?>>Sale</option>
+                <option value="Rent" <?= $property['status'] === 'Rent' ? 'selected' : ''; ?>>Rent</option>
+                <option value="Sold" <?= $property['status'] === 'Sold' ? 'selected' : ''; ?>>Sold</option>
             </select>
+
+            <label for="city">City:</label>
+            <input type="text" id="city" name="city" value="<?= htmlspecialchars($property['city']); ?>" required>
+
+            <!-- New Description Field -->
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" rows="5" required><?= htmlspecialchars($property['description']); ?></textarea>
 
             <label for="image">Image:</label>
             <input type="file" id="image" name="image">
             <p>Current Image:</p>
-            <img src="<?= $property['image_path'] ?>" alt="Current Image" style="width: 100px; border-radius: 5px;">
+            <img src="<?= htmlspecialchars($property['image_path']); ?>" alt="Current Image" style="width: 100px; border-radius: 5px;">
 
             <button type="submit">Update Property</button>
         </form>

@@ -103,6 +103,9 @@
             <label for="price">Price:</label>
             <input type="text" id="price" name="price">
 
+            <label for="city">City:</label>
+            <input type="text" id="city" name="city" required>
+
             <label for="status">Status:</label>
             <select id="status" name="status">
                 <option value="Sale">Sale</option>
