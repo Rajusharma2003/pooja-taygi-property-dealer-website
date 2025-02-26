@@ -134,12 +134,12 @@ if (!$result) {
             <div class="flex">
               <div class="one">
               <h3><a href="#"><?php echo htmlspecialchars($row['title']); ?></a></h3>
-              <p><?php echo htmlspecialchars($row['type']); ?> - Flats</p>
+              <!-- <p><?php echo htmlspecialchars($row['type']); ?> - Flats</p> -->
               <p><?php echo htmlspecialchars($row['city']); ?></p>
               </div>
-              <div class="two">
+              <!-- <div class="two">
               <span class="price">₹<?php echo htmlspecialchars($row['price']); ?></span>
-              </div>
+              </div> -->
             </div>
             <p><?php echo htmlspecialchars($row['description']); ?></p>
             <hr>

@@ -100,8 +100,8 @@
             <label for="type">Type (2BHK, 3BHK):</label>
             <input type="text" id="type" name="type">
 
-            <label for="price">Price:</label>
-            <input type="text" id="price" name="price">
+            <!-- <label for="price">Price:</label> -->
+            <!-- <input type="text" id="price" name="price"> -->
 
             <label for="city">City:</label>
             <input type="text" id="city" name="city" required>

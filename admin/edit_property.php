@@ -136,14 +136,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input type="text" id="title" name="title" value="<?= htmlspecialchars($property['title']); ?>" required>
 
             <label for="type">Type:</label>
-            <select id="type" name="type" required>
-                <option value="House" <?= $property['type'] === 'House' ? 'selected' : ''; ?>>House</option>
-                <option value="Apartment" <?= $property['type'] === 'Apartment' ? 'selected' : ''; ?>>Apartment</option>
-                <option value="Land" <?= $property['type'] === 'Land' ? 'selected' : ''; ?>>Land</option>
-            </select>
+            <input type="text" id="type" name="type" value="<?= htmlspecialchars($property['type']); ?>" required>
 
-            <label for="price">Price:</label>
-            <input type="number" id="price" name="price" value="<?= htmlspecialchars($property['price']); ?>" required>
+            <!-- <label for="price">Price:</label>
+            <input type="number" id="price" name="price" value="<?= htmlspecialchars($property['price']); ?>" required> -->
 
             <label for="status">Status:</label>
             <select id="status" name="status" required>

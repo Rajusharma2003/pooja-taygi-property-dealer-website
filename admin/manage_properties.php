@@ -128,7 +128,7 @@ $result = $stmt->get_result();
                 <th>Image</th>
                 <th>Title</th>
                 <th>Type</th>
-                <th>Price</th>
+                
                 <th>Status</th>
                 <th>City</th>
                 <th>description</th>
@@ -140,7 +140,7 @@ $result = $stmt->get_result();
                         <td><img src='{$row['image_path']}' alt='{$row['title']}'></td>
                         <td>{$row['title']}</td>
                         <td>{$row['type']}</td>
-                        <td>{$row['price']}</td>
+                       
                         <td>{$row['status']}</td>
                         <td>{$row['city']}</td>
                         <td>{$row['description']}</td>

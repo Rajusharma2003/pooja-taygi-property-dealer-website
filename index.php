@@ -33,8 +33,6 @@ if (!$result) {
  
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   
- 
-
  <!-- This is for the navbar and main carousel banner -->
  <style>
   .swiper {
@@ -122,6 +120,18 @@ if (!$result) {
         padding: 10px;
       }
     }
+
+    
+/* This is for the about us section */
+.about-section {
+  padding: 60px 0;
+}
+.about-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 20px;
+}
+/* End about us section */
  </style>
  <!-- End css here -->
 </head>
@@ -210,9 +220,9 @@ if (!$result) {
   <!-- stats - count particles -->
    
   <div class="count-particles"> <span class="js-count-particles">--</span> </div>
-  <section class="main-banner" >
-    <div class="banner-text" >
-      <div class="container " data-aos="fade-up" data-aos-duration="2000" >
+  <section class="main-banner">
+    <div class="banner-text">
+      <div class="container" data-aos="fade-up" data-aos-duration="2000" >
         <h2> Blessings of <br>
           lord Krishna </h2>
         <div style="z-index: -99;" class="krishnaloadimg"> <img style="z-index: 99;" src="img/plo.png" alt="gla" class="img-fluid"> </div>
@@ -390,6 +400,25 @@ if (!$result) {
    </section>
    <!-- End recent property post section -->
 
+    <!-- This is certificate section -->
+    <div class="container">
+      <h1 class="text-center">Certificate</h1>
+        <div class=" about-section overflow-hidden">
+        <div class="d-md-flex align-items-center">
+            <div class="col-md-6 about-us">
+                <h1 class="pb-2">Bharat Vibhushan Puraskar Awarded to Ms. Pooja Tyagi</h1>
+                <!-- <p>Dispatched entreaties boisterous say why stimulated. Certain forbade pcture now prevent carried she get see sitting.</p> -->
+                <p>This certificate is the "Bharat Vibhushan Puraskar" (India Adornment Award) presented to Ms. Pooja Tyagi for "Visionary Real Estate Advisor in Property Solutions".  The award was conferred on November 22, 2024, at the CM Conference Hall, Delhi Vidhan Sabha, Delhi.</p>
+                <p>The certificate is signed by Dr. Atul Kumar Sharma (President) and Mr. Pawan Sharma (Speaker, though the title is cut off, likely "Speaker of the Delhi Legislative Assembly").  It also mentions Shri Ram Niwas Goel, though his title is not visible.  The certificate number is DVSBVP-2211415.  The words "Guest" and "Chief" are also visible, but their context is unclear without more of the image.</p>
+            </div>
+            <div class="col-md-6">
+                <img src="img/certificate.jpg" alt="About Us Image" class="about-image img-fluid">
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- End certificate section -->
+
 
     <!-- This is the image carousel section  -->
     <section class="Life ">
@@ -414,7 +443,7 @@ if (!$result) {
      <section id="contact" class="contact section pt-5">
 
       <div class="mb-5">
-        <iframe style="width: 100%; height: 400px;" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" allowfullscreen=""></iframe>
+        <iframe style="width: 100%; height: 400px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d44727.34477115462!2d77.6181708632871!3d27.56488536359039!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39736fcb5e9a2309%3A0x9868374c5faaf3ce!2sVrindavan%2C%20Uttar%20Pradesh!5e1!3m2!1sen!2sin!4v1740030620128!5m2!1sen!2sin" frameborder="0" allowfullscreen=""></iframe>
       </div>
       <!-- End Google Maps -->
 
@@ -472,10 +501,10 @@ if (!$result) {
           </div>
           <!-- End Contact Form -->
         </div>
-
       </div>
 
-</section><!-- /Contact Section -->
+     </section>
+     <!-- /Contact Section -->
 
 
 
@@ -521,7 +550,7 @@ if (!$result) {
       <a class="whatsapp"
         href="https://api.whatsapp.com/send/?phone=8533874740&text&type=phone_number&app_absent=0"><i
         class="bi bi-whatsapp"></i></a>
-  </div>
+    </div>
    <!-- End whatsapp section -->
 
       <!-- This is the js section -->
