@@ -481,17 +481,17 @@ if (!$result) {
           </div>
 
           <div class="col-lg-7 border p-4">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+            <form action="https://script.google.com/macros/s/AKfycbwlTUu85DkysFLGujVH9ZaWNrvvF48QLqay5wHzrKbqbttQnP3x46y4EBaf_HAjZr8-0A/exec" method="post" role="form" class="php-email-form">
               <div class="row flex-column" style="gap: 28px">
                 <div class="">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required="">
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required="true">
                 </div>
                 <div class="">
                   <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required="">
                 </div>
               </div>
               <div class="form-group mt-3">
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required="">
+                <input type="text" class="form-control" name="number" id="subject" placeholder="number" required="true">
               </div>
               <div class="form-group mt-3">
                 <textarea class="form-control" name="message" placeholder="Message" required=""></textarea>
